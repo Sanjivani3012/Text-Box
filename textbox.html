@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="InputBox.css">
+	<title></title>
+</head>
+<body>
+
+       //text editor text manipulator
+
+
+
+
+	<h1 align="center" class="heading">TEXT BOX</h1>
+	<div class="container" align="center">
+		<form class="textboxform">
+			<label>Enter your text below</label>
+			<br><br>
+			<textarea id="text" rows="10" cols="70" onkeyup="updateInfo() " autofocus></textarea><br>
+			<button type="button" onclick="transformUpperCase()">UPPERCASE</button>
+			<button type="button" onclick="transformLowerCase()">LowerCASE</button>
+			<button type="button" onclick="findtext()">Find Text</button>
+			<button type="button" onclick="changeColor()">Change Color</button>
+			<button type="button" onclick="textUnderline()">Underline</button>
+			<button type="button" onclick="updateInfo()">Update Info</button><br><br>
+			<button type="button" onclick="clearText()" class="btn shadow-sm btn-outline-primary side" 
+			        data-toggle="tooltip"  data-placement="top" title="Tooltip on top">  Clear Text</button> 
+
+
+			<br><br>
+
+			<h2 id="textinfo"> This text contains 0 words and 0 Characters</h2>
+
+
+
+
+			
+		</form>
+	</div>
+	<script type="text/javascript">
+		let text = document.getElementById("text");
+		let textinfo = document.getElementById("textinfo");
+		let clr ;
+		function transformUpperCase() {
+			text.value=text.value.toUpperCase();
+
+		}
+
+		function transformLowerCase() {
+			text.value=text.value.toLowerCase();
+
+		}
+
+		function findtext() {
+			let searchText=prompt("Enter the text :");
+			if (text.value.includes(searchText)) {
+				alert(`searchText "${searchText} " is present`);
+
+			}
+			else{
+				alert(`searchText "${searchText} " is not present`);
+			}
+		}
+
+		function changeColor() {
+			clr=prompt(("Enter your fav color :").toLowerCase())
+			text.style.color=clr;
+		}
+
+		function textUnderline() {
+			text.style.textDecoration=`underline 2px solid ${clr}`;
+		}
+
+		function updateInfo() {
+			let numberOfWords=text.value.trim().split(" ").length;
+			textInfo.innerHTML=`This text contains ${numberOfWords} words and ${text.value.length} characters`
+		}
+
+		function clearText() { 
+			    //function to make the text back to normal by removing all the methods applied  
+			    //using DOM method 
+			    document.getElementById("textarea1").style. = "normal"; 
+			    document.getElementById("textarea1").style.textAlign = "left"; 
+			    document.getElementById("textarea1").style.fontStyle = "normal"; 
+			    document.getElementById("textarea1").style.textTransform = "capitalize"; 
+			    document.getElementById("textarea1").value = " "; 
+}
+
+		
+	</script>
+
+</body>
+</html>
